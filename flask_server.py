@@ -77,9 +77,9 @@ def register_user():
         # Connect to your MySQL database
         connection = pymysql.connect(
             host='sql11.freesqldatabase.com',
-            user='sql11681109',
-            password='C1ex6u3Uaa',
-            db='sql11681109',
+            user='sql11694019',
+            password='wIJB3Bvi5t',
+            db='sql11694019',
             charset='utf8mb4',
             cursorclass=pymysql.cursors.DictCursor
         )
