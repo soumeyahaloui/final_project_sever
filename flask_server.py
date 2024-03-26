@@ -15,12 +15,12 @@ logging.basicConfig(level=logging.INFO)
 
 
 def get_database_connection() -> pymysql.connections.Connection:
-    # Use the details from your cloud database service.
+    # Use the details from your environment variables
     return pymysql.connect(
-        host=os.environ.get('DB_HOST'),
-        user=os.environ.get('DB_USER'),
-        password=os.environ.get('DB_PASSWORD'),
-        db=os.environ.get('DB_NAME'),
+        host=os.environ.get('DATABASE_HOST'),
+        user=os.environ.get('DATABASE_USER'),
+        password=os.environ.get('DATABASE_PASSWORD'),
+        db=os.environ.get('DATABASE_NAME'),
         charset="utf8mb4",
         cursorclass=pymysql.cursors.DictCursor
     )
