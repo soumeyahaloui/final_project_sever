@@ -138,7 +138,7 @@ def get_data():
     try:
         connection = get_database_connection()
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM fundr_alx")
+            cursor.execute("SELECT * FROM users")
             result = cursor.fetchall()
             return jsonify(result)
     except Exception as e:
@@ -157,7 +157,7 @@ def get_family_data(family_id):
     try:
         connection = get_database_connection()
         with connection.cursor() as cursor:
-            query = "SELECT * FROM fundr_alx WHERE ID = %s"
+            query = "SELECT * FROM families WHERE ID = %s"
             cursor.execute(query, (family_id,))
             result = cursor.fetchone()
             if result:
