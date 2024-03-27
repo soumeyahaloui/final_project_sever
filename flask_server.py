@@ -161,6 +161,7 @@ def get_family_data(family_id):
             cursor.execute(query, (family_id,))
             result = cursor.fetchone()
             if result:
+                logging.info(f"Family data retrieved: {result}")
                 return jsonify(result)
             else:
                 return jsonify({"error": "Family not found"}), 404
