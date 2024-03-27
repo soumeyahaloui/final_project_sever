@@ -157,7 +157,7 @@ def get_family_data(family_id):
     try:
         connection = get_database_connection()
         with connection.cursor() as cursor:
-            query = "SELECT * FROM families WHERE ID = %s"
+            query = "SELECT * FROM families WHERE id = %s"
             cursor.execute(query, (family_id,))
             result = cursor.fetchone()
             if result:
