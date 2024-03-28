@@ -90,7 +90,7 @@ def register_user():
             if cursor.fetchone():
                 return jsonify({"error": "Username already exists"}), 409
 
-            # Insert new user into the database
+            # Insert new user into database
             sql = "INSERT INTO users (username, phone_number, password) VALUES (%s, %s, %s)"
             cursor.execute(sql, (username, phone_number, hashed_password))
             connection.commit()
