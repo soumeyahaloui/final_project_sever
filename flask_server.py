@@ -157,12 +157,19 @@ def get_family_data(family_id):
     try:
         connection = get_database_connection()
         with connection.cursor() as cursor:
-            query = "SELECT * FROM families WHERE id = %s"
-            cursor.execute(query, (family_id,))
+            # Select family data from the 'families' table based on family_id
+            cursor.execute("SELECT * FROM families WHERE id = %s", (family_id,))
             result = cursor.fetchone()
+
             if result:
                 logging.info(f"Family data retrieved: {result}")
-                return jsonify(result)
+                # Return family data in JSON format
+                return jsonify({
+                    "id": result['id'],
+                    "name": result['name'],
+                    "image_url": result['image_url'],
+                    "amount": result['amount']
+                }), 200
             else:
                 return jsonify({"error": "Family not found"}), 404
     except Exception as e:
@@ -173,6 +180,7 @@ def get_family_data(family_id):
         if connection:
             connection.close()
             logging.info("Database connection closed.")
+
 
 
 @app.route('/donate', methods=['POST'])
