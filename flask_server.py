@@ -187,7 +187,7 @@ def donate():
             # Start transaction
             connection.begin()
             
-            # Retrieve  current amount
+            # Retrieve current amount
             cursor.execute("SELECT SUM(amount) as total_credit FROM transactions WHERE customer_name = %s AND status = 'complete'", (username,))
 
             result = cursor.fetchone()
@@ -202,7 +202,7 @@ def donate():
 
             new_credit = current_credit - donation_amount
             
-            # Record the donation as a new transaction with negative amount
+            # Record the donation as  new transaction with negative amount
             cursor.execute("INSERT INTO transactions (phone_number, amount, timestamp, status, customer_name) VALUES (%s, %s, NOW(), 'complete', %s)",
                            (data['phone_number'], -donation_amount, username))
             connection.commit()  # Commit transaction
