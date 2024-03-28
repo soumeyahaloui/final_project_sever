@@ -187,7 +187,7 @@ def donate():
             # Start transaction
             connection.begin()
             
-            # Retrieve the current amount
+            # Retrieve  current amount
             cursor.execute("SELECT SUM(amount) as total_credit FROM transactions WHERE customer_name = %s AND status = 'complete'", (username,))
 
             result = cursor.fetchone()
