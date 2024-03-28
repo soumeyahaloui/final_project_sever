@@ -1,6 +1,0 @@
-:jkpj: wq
- 
-kknn: 
-
-okknn
-
