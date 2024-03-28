@@ -43,7 +43,7 @@ def create_user_table():
         )
 
         with connection.cursor() as cursor:
-            # SQL statement to create the users table
+            # SQL statement to create  users table
             sql = """
             CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
