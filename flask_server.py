@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def get_database_connection() -> pymysql.connections.Connection:
-    # Use the details from your environment variables
+    # Use details from your environment variables
     return pymysql.connect(
         host=os.environ.get('DATABASE_HOST'),
         user=os.environ.get('DATABASE_USER'),
