@@ -1,9 +1,13 @@
 from flask import Flask, jsonify
 import pymysql
+
 import traceback
+
 import logging
+
 import os
 from flask import request
+
 import hashlib
 from decimal import Decimal
 
@@ -15,7 +19,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def get_database_connection() -> pymysql.connections.Connection:
-    # Use the details from your environment variables
+    # Use details from your environment variables
     return pymysql.connect(
         host=os.environ.get('DATABASE_HOST'),
         user=os.environ.get('DATABASE_USER'),
@@ -43,7 +47,7 @@ def create_user_table():
         )
 
         with connection.cursor() as cursor:
-            # SQL statement to create the users table
+            # SQL statement to create  users table
             sql = """
             CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -90,7 +94,7 @@ def register_user():
             if cursor.fetchone():
                 return jsonify({"error": "Username already exists"}), 409
 
-            # Insert new user into the database
+            # Insert new user into database
             sql = "INSERT INTO users (username, phone_number, password) VALUES (%s, %s, %s)"
             cursor.execute(sql, (username, phone_number, hashed_password))
             connection.commit()
@@ -195,7 +199,7 @@ def donate():
             # Start transaction
             connection.begin()
             
-            # Retrieve the current amount
+            # Retrieve current amount
             cursor.execute("SELECT SUM(amount) as total_credit FROM transactions WHERE customer_name = %s AND status = 'complete'", (username,))
 
             result = cursor.fetchone()
@@ -210,7 +214,7 @@ def donate():
 
             new_credit = current_credit - donation_amount
             
-            # Record the donation as a new transaction with negative amount
+            # Record the donation as  new transaction with negative amount
             cursor.execute("INSERT INTO transactions (phone_number, amount, timestamp, status, customer_name) VALUES (%s, %s, NOW(), 'complete', %s)",
                            (data['phone_number'], -donation_amount, username))
             connection.commit()  # Commit transaction
