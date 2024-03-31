@@ -39,9 +39,9 @@ def create_user_table():
         # Connect to your MySQL database
         connection = pymysql.connect(
             host='sql11.freesqldatabase.com',
-            user='sql11694019',
-            password='wIJB3Bvi5t',
-            db='sql11694019',
+            user='sql11695666',
+            password='5Gy4bRlFwc',
+            db='sql11695666',
             charset='utf8mb4',
             cursorclass=pymysql.cursors.DictCursor
         )
