@@ -169,10 +169,10 @@ def get_family_data(family_id):
                 logging.info(f"Family data retrieved: {result}")
                 # Return family data in JSON format
                 return jsonify({
-                    "id": result['ID'],
-                    "name": result['Name'],
-                    "image_url": result['Image'],
-                    "amount": result['Amount']
+                    "ID": result['ID'],
+                    "Name": result['Name'],
+                    "Image": result['Image'],
+                    "Amount": result['Amount']
                 }), 200
             else:
                 return jsonify({"error": "Family not found"}), 404
