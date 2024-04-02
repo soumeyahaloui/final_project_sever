@@ -142,7 +142,7 @@ def get_data():
     try:
         connection = get_database_connection()
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM users")
+            cursor.execute("SELECT * FROM families")
             result = cursor.fetchall()
             return jsonify(result)
     except Exception as e:
